@@ -8,6 +8,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/ping', methods=['GET'])
+def ping():
+    try:
+        # Perform minimal processing or just return a success response
+        return jsonify({"status": "success"}), 200
+    except Exception as e:
+        # In case of errors, return minimal error information
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/parse_resume', methods=['POST'])
 def parse_resume():
