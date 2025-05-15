@@ -13,3 +13,4 @@ flask-cors
 gunicorn
 matplotlib
 reportlab
+xhtml2pdf
