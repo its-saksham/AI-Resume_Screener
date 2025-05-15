@@ -55,7 +55,7 @@ def parse_resume():
             'resume_text': resume_text
         })
 
-    # Pass all results to the template
+   
     return render_template("result.html",
                            required_skills=required_skills,
                            results=results)
@@ -67,7 +67,7 @@ from io import BytesIO
 
 @app.route("/download_report", methods=["POST"])
 def download_report():
-    # Collect form data safely
+   
     filename = request.form.get("filename", "Unnamed")
     match_score = request.form.get("match_score", "N/A")
     resume_text = request.form.get("resume_text", "No text found.")
@@ -76,7 +76,7 @@ def download_report():
     matched_skills = request.form.getlist("matched_skills[]")
     missing_skills = request.form.getlist("missing_skills[]")
 
-    # Render HTML content for PDF
+   
     pdf_template = f"""
     <html>
     <head><style>
@@ -110,7 +110,7 @@ def download_report():
     </html>
     """
 
-    # Convert HTML to PDF
+    
     result = BytesIO()
     pisa_status = pisa.CreatePDF(pdf_template, dest=result)
 
